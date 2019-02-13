@@ -1,0 +1,5 @@
+Information on UDP and Multicast
+
+https://docs.oracle.com/javase/tutorial/networking/datagrams/clientServer.html
+
+https://docs.oracle.com/javase/tutorial/networking/datagrams/broadcasting.html
