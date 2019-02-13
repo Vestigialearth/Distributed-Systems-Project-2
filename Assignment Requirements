@@ -1,0 +1,42 @@
+Requirements
+
+A device must be able to start anywhere on your local area network. This means you must not hard code local host, 127.x.y.z addresses, or do anything that prevents the device from starting on any random computer.
+
+A device will maintain its state, based on the type of device it is. For example, a light bulb is either on or off, maintains a brightness level (optional), or color level (optional), and has a built-in timer or schedule.
+
+A device must also announce itself on the local network. Ideally, the device will communicate via multicast (periodically) so it’s health can be monitored.
+
+A device manager will maintain a list of devices on the network and expose a dashboard of devices with the ability to control the device, based on its capabilities. It is entirely possiible the dashboard also has a web interface that a user could browse to see the list of attached devices. Note that the device manager, however, must be designed so it can operate without being deployed on the internet. That is, you should be able to start it anywhere on the LAN. Then we could test it by point our browser at the IP address and port.
+
+It is entirely possible that the devices and the device manager are started in random order. After all, someone could install a smart light bulb but not have the management software installed. 
+
+Options
+
+Obviously, to make something more robust, we should have the following.
+
+A device could be smart enough to detect that the device manager is not available yet. If so, it could refuse to start until it can “register” with the device manager.
+
+The device manager and all devices must be restartable. This makes obvious sense, but in the real world, you cannot assume the devices maintain power continuously. You can’t even assume the IP addresses are permanent (in fact, with DHCP, they expire)
+
+We could (and will, in the future) have a design with NO device manager. That is, the first device to be on the network without discovering any peer devices could act a manager. I don’t recommend trying this in Project 2, but this is to give more advanced students something to think about as a challenge! :-)
+
+A heartbeat system can be integrated with the device design to broadcast heartbeats every so often. This is a way for the device manager to know whether the devices are in a healthy state, or something has gone awry. A typical approach is to use 3 states: red (device is dead), yellow (device not reached within some expected interval, and green (device has been in contact recently).
+
+
+Even cooler options
+
+Make device manager a fully hosted (and secure) web app that devices contact using remote HTTP requests.  Add support for the remote device manager to control devices that connect to it. 
+
+What are the design choices here? Do the devices have to be in continuous contact with the device  manager? Can devices maintain a semi-persistent connection to the device manager to receive “server pushes” for remote control?
+
+
+Schedule
+
+Week 1 - Requirements and Prototype to show that you can get some basic TCP and/or UDP code working.
+
+Week 2 - Build out support for all devices and the device manager
+
+Week 3 - Add dashboard manager with command-line UX or web UX
+
+
+There are enough things to think about that you’re going to need a team where everyone is working on this. Each team member will need to be involved in some programming and be able to justify his/her contributions via Google Forms that will be required each week.
